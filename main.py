@@ -55,32 +55,32 @@ class TriggerBot:
         self.root.attributes("-alpha", 0.7)
         self.root.configure(bg="black")
 
-        self.title_label = tk.Label(self.root, text="OverflowCheats", fg="aqua", bg="black", font=("Arial", 12, "bold"))
+        self.title_label = tk.Label(self.root, text="OverFlow.Su V1.0", fg="aqua", bg="black", font=("Arial", 12, "bold"))
         self.title_label.pack(pady=5)
         
-        self.status_label = tk.Label(self.root, text="Durum: Kapalı", fg="red", bg="black", font=("Arial", 10))
+        self.status_label = tk.Label(self.root, text="Status: Disabled", fg="red", bg="black", font=("Arial", 10))
         self.status_label.pack(pady=5)
 
-        self.key_label = tk.Label(self.root, text=f"Gönderilen Tuş: {self.current_key}", fg="white", bg="black", font=("Arial", 10))
+        self.key_label = tk.Label(self.root, text=f"Shoot Key: {self.current_key}", fg="white", bg="black", font=("Arial", 10))
         self.key_label.pack(pady=5)
 
-        self.captureline_label = tk.Label(self.root, text="CaptureLine: Kapalı", fg="white", bg="black", font=("Arial", 10))
+        self.captureline_label = tk.Label(self.root, text="CaptureLine: Disabled", fg="white", bg="black", font=("Arial", 10))
         self.captureline_label.pack(pady=5)
         
-        self.mode_label = tk.Label(self.root, text="Mod: Sprey", fg="white", bg="black", font=("Arial", 10))
+        self.mode_label = tk.Label(self.root, text="Shoot Mode: Spread", fg="white", bg="black", font=("Arial", 10))
         self.mode_label.pack(pady=5)
         
         self.root.update()
 
     def update_overlay(self):
-        self.status_label.config(text=f"Durum: {'Açık' if self.triggerbot else 'Kapalı'}", fg="green" if self.triggerbot else "red")
-        self.key_label.config(text=f"Gönderilen Tuş: {self.current_key}")
-        self.captureline_label.config(text=f"CaptureLine: {'Açık' if self.captureline_enabled else 'Kapalı'}")
-        self.mode_label.config(text=f"Mod: {'Tek Mermi' if self.one_bullet_mode else 'Sprey'}")
+        self.status_label.config(text=f"Status: {'Enabled' if self.triggerbot else 'Disabled'}", fg="green" if self.triggerbot else "red")
+        self.key_label.config(text=f"Shoot Key: {self.current_key}")
+        self.captureline_label.config(text=f"CaptureLine: {'Enabled' if self.captureline_enabled else 'Disabled'}")
+        self.mode_label.config(text=f"Mod: {'One Bullet' if self.one_bullet_mode else 'Spread'}")
         self.root.update()
 
     def searcherino(self):
-        img = np.array(self.sct.grab(GRAB_ZONE))
+        img = np.array(self.sct.grab(GRAB_ZONE))o
         pixels = img.reshape(-1, 4)
         color_mask = (
             (pixels[:, 0] > self.R - self.color_tolerance) & (pixels[:, 0] < self.R + self.color_tolerance) &
